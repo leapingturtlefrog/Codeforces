@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PY_FILE_STRING='for m in range(int(input())):
+PY_FILE_STRING="for m in range(int(input())):
     l = int(input())
     
-    print()'
+    print()"
 
 if [ $# -eq 1 ]; then
     mkdir "$1"
@@ -13,10 +13,14 @@ if [ $# -eq 1 ]; then
         echo "$PY_FILE_STRING" > "s$i.py"
     done
 else
+    if [ $# -gt 0 ]; then
+        git add . || exit 1
+        git commit -m "$*" || exit 2
+    fi
     for dir in ./*; do
         if [ -d "$dir" ]; then
             for file in "$dir"/*; do
-                if [ grep -q "$PY_FILE_STRING" "$file" ]; then
+                if [ "$(cat "$file")" == "$PY_FILE_STRING" ]; then
                     rm "$file"
                 elif [ ! -s "$file" ]; then
                     rm "$file"
