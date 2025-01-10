@@ -12,11 +12,9 @@ if [ $# -eq 1 ]; then
         touch "s$i.txt"
         echo "$PY_FILE_STRING" > "s$i.py"
     done
-else
-    if [ $# -gt 0 ]; then
-        git add . || exit 1
-        git commit -m "$*" || exit 2
-    fi
+elif [ $# -gt 0 ]; then
+    git add . || exit 1
+    git commit -m "$*" || exit 2
     for dir in ./*; do
         if [ -d "$dir" ]; then
             for file in "$dir"/*; do
