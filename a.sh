@@ -1,9 +1,8 @@
 #!/bin/bash
 
-PY_FILE_STRING="for m in range(int(input())):
-    l = int(input())
-    
-    print()"
+PY_FILE_STRING="for t in range(int(input())):
+    n = list(map(int, input().split()))
+    "
 
 if [ $# -eq 1 ]; then
     mkdir "$1"
