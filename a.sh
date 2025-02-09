@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PY_FILE_STRING="for t in range(int(input())):
-    n = list(map(int, input().split()))
+    n = [int(x) for x in input().split()]
     "
 
 if [ $# -eq 1 ]; then
