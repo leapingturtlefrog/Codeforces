@@ -25,4 +25,5 @@ elif [ $# -gt 0 ]; then
     done
     git add . || exit 1
     git commit -m "$*" || exit 2
+    git push
 fi
